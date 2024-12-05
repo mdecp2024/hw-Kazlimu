@@ -68,7 +68,9 @@
 <h3>w13</h3>
 <p>w13 作業:</p>
 <p>請在下列圖形中的兩個正方形外圍, 以黑色畫筆畫圓, 並設法在各線條所圍成的封閉區域塗上不同顏色. 操作過程請拍攝影片, 並在頁面中列出作業心得.</p>
-<div id="brython_div1"><img alt="" height="198" src="/images/下載.png" width="198"/><img alt="" height="200" src="/images/下載 (1).png" width="200"/></div>
+<div id="brython_div1"><img alt="" height="250" src="/images/下載.png" width="250"/><img alt="" height="250" src="/images/下載 (1).png" width="250"/></div>
+<p></p>
+<p>Brython Canvas Example</p>
 <p><!-- 導入 brython 程式庫 --></p>
 <p>
 <script src="/static/brython.js"></script>
@@ -97,7 +99,23 @@ ctx.lineWidth = 1
 ctx.strokeStyle = 'blue'
 ctx.beginPath() 
 ctx.moveTo(10, 10)
-ctx.lineTo(100, 100)
+ctx.lineTo(210, 210)
+ctx.stroke()
+ctx.strokeStyle = 'red'
+ctx.beginPath() 
+ctx.rect(10, 10, 200, 200)
+ctx.rect(110, 110, 200, 200)
+rect1_center = (10 + 200 / 2, 10 + 200 / 2)
+rect1_radius = math.sqrt(200**2 + 200**2) / 2
+ctx.beginPath()
+ctx.arc(rect1_center[0], rect1_center[1], rect1_radius, 0, 2 * math.pi)
+ctx.strokeStyle = 'black'
+ctx.stroke()
+rect2_center = (110 + 200 / 2, 110 + 200 / 2)
+rect2_radius = math.sqrt(200**2 + 200**2) / 2
+ctx.beginPath()
+ctx.arc(rect2_center[0], rect2_center[1], rect2_radius, 0, 2 * math.pi)
+ctx.strokeStyle = 'black'
 ctx.stroke()
 </script>
 </p><h1>HW 2</h1>
