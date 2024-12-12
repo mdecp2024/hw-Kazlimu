@@ -143,44 +143,49 @@ img.add_border {
         </header>
     <div id="tipue_search_content">w12 << <a href='w12.html'>Previous</a> <a href='HW 2.html'>Next</a> >> HW 2<br /><h1>w13_hw</h1>
 <p>w13 作業:</p>
-<p>請在下列圖形中的兩個正方形外圍, 以黑色畫筆畫圓, 並設法在各線條所圍成的封閉區域塗上不同顏色. 操作過程請拍攝影片, 並在頁面中列出作業心得.</p>
-<div id="brython_div1"><img alt="" height="250" src="./../images/下載.png" width="250"/><img alt="" height="250" src="./../images/下載 (1).png" width="250"/></div>
+<p>請在下列圖形中的兩個正方形外圍, 以黑色畫筆畫圓, 並設法在各線條所圍成的封閉區域塗上不同顏色. 操作過程請拍攝影片, 並在頁面中列出作業心得。</p>
 <p></p>
-<p>Brython Canvas Example</p>
-<p><!-- 導入 brython 程式庫 --></p>
+<div id="brython_div1"></div>
+<!-- 導入 brython 程式庫 -->
 <p>
 <script src="./../cmsimde/static/brython.js"></script>
 <script src="./../cmsimde/static/brython_stdlib.js"></script>
 </p>
-<p><!-- 啟動 Brython --></p>
+<!-- 啟動 Brython -->
 <p>
 <script>
 window.onload=function(){
 brython({debug:1, pythonpath:['./../cmsimde/static/','./../downloads/py/']});
 }
 </script>
-</p>
-<div id="brython_div1"></div>
-<p>
-<script type="text/python">
+<script type="text/python3">
 from browser import html
 from browser import document as doc
+ 
 # 利用 html 建立 canvas 超文件物件
 canvas = html.CANVAS(width=400, height=400)
 brython_div = doc["brython_div1"]
 brython_div <= canvas
+
 ctx = canvas.getContext("2d")
 
 ctx.lineWidth = 1
-ctx.strokeStyle = 'blue'
-ctx.beginPath() 
-ctx.moveTo(10, 10)
-ctx.lineTo(210, 210)
+ctx.strokeStyle = 'red' 
+ctx.beginPath()
+ctx.rect(100, 100, 200, 200)  
+ctx.rect(200, 200, 200, 200)  
 ctx.stroke()
-ctx.strokeStyle = 'red'
-ctx.beginPath() 
-ctx.rect(10, 10, 200, 200)
-ctx.rect(110, 110, 200, 200)
+ctx.strokeStyle = 'blue' 
+ctx.beginPath()
+ctx.moveTo(100, 100)  
+ctx.lineTo(300, 300)  
+ctx.stroke()
+ctx.strokeStyle = 'black'  
+ctx.beginPath()
+ctx.arc(200, 200, 141.4, 0, 2 * 3.14) 
+ctx.stroke()
+ctx.beginPath()
+ctx.arc(300, 300, 141.4, 0, 2 * 3.14)  
 ctx.stroke()
 </script>
 </p><br />w12 << <a href='w12.html'>Previous</a> <a href='HW 2.html'>Next</a> >> HW 2</div>

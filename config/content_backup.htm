@@ -65,46 +65,51 @@
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/R_pJOfGcLUo" width="560"></iframe></p>
 <p>------------------------------</p>
 <p>心得： 簡單明瞭： 這段程式碼結構簡單，邏輯清晰。利用 for 迴圈遍歷範圍中的數字，並且在每次迴圈中將數字賦值給變數 num，然後輸出。這樣的方式符合基本的程式設計原則，易於理解和維護。 靈活的變數命名： i 和 num 都是常見且易於理解的變數命名，尤其是 i 代表迴圈中的索引，而 num 代表每次迴圈的數字值，這使得程式碼具有良好的可讀性。 簡潔性： 使用了 range(1, 6)，使得程式直接從 1 開始到 5 結束，這樣能夠減少不必要的計算，並且簡化了程式碼。</p>
-<h3>w13</h3>
+<h3>w13_hw</h3>
 <p>w13 作業:</p>
-<p>請在下列圖形中的兩個正方形外圍, 以黑色畫筆畫圓, 並設法在各線條所圍成的封閉區域塗上不同顏色. 操作過程請拍攝影片, 並在頁面中列出作業心得.</p>
-<div id="brython_div1"><img alt="" height="250" src="/images/下載.png" width="250"/><img alt="" height="250" src="/images/下載 (1).png" width="250"/></div>
+<p>請在下列圖形中的兩個正方形外圍, 以黑色畫筆畫圓, 並設法在各線條所圍成的封閉區域塗上不同顏色. 操作過程請拍攝影片, 並在頁面中列出作業心得。</p>
 <p></p>
-<p>Brython Canvas Example</p>
-<p><!-- 導入 brython 程式庫 --></p>
+<div id="brython_div1"></div>
+<!-- 導入 brython 程式庫 -->
 <p>
 <script src="/static/brython.js"></script>
 <script src="/static/brython_stdlib.js"></script>
 </p>
-<p><!-- 啟動 Brython --></p>
+<!-- 啟動 Brython -->
 <p>
 <script>
 window.onload=function(){
-brython({debug:1, pythonpath:['/static/','./../downloads/py/']});
+brython({debug:1, pythonpath:['./../cmsimde/static/','./../downloads/py/']});
 }
 </script>
-</p>
-<div id="brython_div1"></div>
-<p>
-<script type="text/python">
+<script type="text/python3">
 from browser import html
 from browser import document as doc
+ 
 # 利用 html 建立 canvas 超文件物件
 canvas = html.CANVAS(width=400, height=400)
 brython_div = doc["brython_div1"]
 brython_div <= canvas
+
 ctx = canvas.getContext("2d")
 
 ctx.lineWidth = 1
-ctx.strokeStyle = 'blue'
-ctx.beginPath() 
-ctx.moveTo(10, 10)
-ctx.lineTo(210, 210)
+ctx.strokeStyle = 'red' 
+ctx.beginPath()
+ctx.rect(100, 100, 200, 200)  
+ctx.rect(200, 200, 200, 200)  
 ctx.stroke()
-ctx.strokeStyle = 'red'
-ctx.beginPath() 
-ctx.rect(10, 10, 200, 200)
-ctx.rect(110, 110, 200, 200)
+ctx.strokeStyle = 'blue' 
+ctx.beginPath()
+ctx.moveTo(100, 100)  
+ctx.lineTo(300, 300)  
+ctx.stroke()
+ctx.strokeStyle = 'black'  
+ctx.beginPath()
+ctx.arc(200, 200, 141.4, 0, 2 * 3.14) 
+ctx.stroke()
+ctx.beginPath()
+ctx.arc(300, 300, 141.4, 0, 2 * 3.14)  
 ctx.stroke()
 </script>
 </p><h1>HW 2</h1>
