@@ -432,6 +432,7 @@ draw_rectangle(31 * 2 + spacing * 11, 8 * 2 + spacing, 60, 40)
 <p>透過 Jupyterlab 協同網頁, 輪流指定各組編寫 HW 3 相關的程式練習, 以及網頁內容 (localhost 與 Codespaces 環境)編輯.</p>
 <h3>w16_exam2</h3>
 <p>題目一: 請以自己的學號最後四碼作為下列繪圖的左上方點座標, 並以紅色文字標示出該點座標, 之後請利用 pixel=2 的藍色直線, 自訂迷宮畫布大小, 直接在頁面畫出下列圖像, 繪圖程式除了必須直接列在頁面 html 檔案外, 也請存入自己的 Gist 區域, 並在所完成的圖像下方, 以自選標題的 anchor 連結至 Gist, 讓使用者點擊該連結後, 可以在各自的 Brython 頁面中繪出下列圖像.</p>
+<p><a href="https://mdecp2024.github.io/hw-Kazlimu/content/Brython.html?src=https://gist.githubusercontent.com/Kazlimu/3fca4e8256095372b5c8beb227bfa3ab/raw/dc4ad4c1595ba6d2d5dc131fe32ae3d1495a9f57/w16_exam2">w16_exam2 Brython 效果演示 </a></p>
 <div id="brython_div1"></div>
 <!-- 導入 brython 程式庫 -->
 <p>
@@ -495,7 +496,8 @@ ctx.fillStyle = "red"
 ctx.font = "10px Arial"
 ctx.fillText("原點", 31, 8)
 </script>
-</p><h1>HW 4</h1>
+</p>
+<h1>HW 4</h1>
 <h4>主題: 利用 Python 控制機電模擬系統 (20%)</h4>
 <p style="padding-left: 30px;">利用 <a href="https://solvespace.com/">https://solvespace.com/</a> 建立機械系統零組件</p>
 <p style="padding-left: 30px;">利用 <a href="https://www.coppeliarobotics.com/">CoppeliaSim</a> 建立機電模擬系統</p>
@@ -507,7 +509,155 @@ ctx.fillText("原點", 31, 8)
 <h2>HW 4 Exam</h2>
 <p>每六人為一組進行協同程式練習</p>
 <p>透過 Jupyterlab 協同網頁, 輪流指定各組編寫 HW 4 相關的程式練習, 以及網頁內容 (localhost 與 Codespaces 環境)編輯.</p>
-<h1>Final Report</h1>
+<h3>w16_exam3</h3>
+<p>題目一: 請以自己的學號最後四碼作為下列繪圖的左上方點座標, 請將 (39, 32) 作為繪圖左上方點座標, 並以紅色文字標示出該點座標, 之後請利用 pixel=2 的黑色直線, 自訂迷宮畫布大小, 直接在頁面畫出下列圖像, 並且利用紅色連續線段標示從上方入口, 走至下方出口的路線圖.</p>
+<p><a href="https://mdecp2024.github.io/hw-Kazlimu/content/Brython.html?src=https://gist.githubusercontent.com/Kazlimu/25acadbf54fef67e1bda85c656aa272d/raw/a54e2a3cda5eea09c85a07c2996692643541b19e/w16_exam3">w16_exam3 Brython 效果演示</a></p>
+<div id="brython_div1"></div>
+<!-- 導入 brython 程式庫 -->
+<p>
+<script src="/static/brython.js"></script>
+<script src="/static/brython_stdlib.js"></script>
+</p>
+<!-- 啟動 Brython -->
+<p>
+<script>
+window.onload=function(){
+brython({debug:1, pythonpath:['./../cmsimde/static/','./../downloads/py/']});
+}
+</script>
+<script type="text/python3">
+from browser import html
+from browser import document as doc
+
+# 利用 html 建立 canvas 超文件物件
+canvas = html.CANVAS(width=400, height=400, style={"border": "1px solid black"})
+brython_div = doc["brython_div1"]
+brython_div <= canvas
+
+# 獲取繪圖上下文
+ctx = canvas.getContext("2d")
+
+# 設定迷宮線條的顏色與寬度
+line_color = "black"
+line_width = 2
+ctx.strokeStyle = line_color
+ctx.lineWidth = line_width
+
+# 繪製迷宮
+lines = [
+    [(31, 8), (111, 8)],
+    [(151, 8), (231, 8)],
+    [(31, 8), (31, 208)],
+    [(231, 8), (231, 208)],
+    [(31, 208), (111, 208)],
+    [(231, 208), (151, 208)],
+    [(71,48 ), (191,48 )],
+    [(191,48 ), (191,88 )],
+    [(111,48 ), (111,88 )],
+    [(111,88 ), (31,88 )],
+    [(71,128 ), (191,128 )],
+    [(191,128 ), (191,208 )],
+    [(151,128 ), (151,88 )],
+    [(71,128 ), (71,168 )],
+    [(111,208 ), (111,168 )],
+    [(111,168 ), (151,168 )],
+]
+
+for line in lines:
+    (x1, y1), (x2, y2) = line
+    ctx.beginPath()
+    ctx.moveTo(x1, y1)
+    ctx.lineTo(x2, y2)
+    ctx.stroke()
+
+# 標註原點
+ctx.fillStyle = "red"
+ctx.font = "10px Arial"
+ctx.fillText("原點", 31, 8)
+
+# 設定紅色線條的顏色與寬度
+line_color = "red"
+ctx.strokeStyle = line_color
+ctx.lineWidth = 2
+
+# 繪製新的紅色線條
+ctx.beginPath()
+ctx.moveTo(131, 8)  # 新紅色線條的起點
+ctx.lineTo(131, 28)  # 新紅色線條的終點
+ctx.stroke()
+
+# 繪製另一條紅色線條
+ctx.beginPath()
+ctx.moveTo(131, 28)  
+ctx.lineTo(211, 28)  
+ctx.stroke()
+
+ctx.beginPath()
+ctx.moveTo(211, 28)  
+ctx.lineTo(211, 108)  
+ctx.stroke()
+
+ctx.beginPath()
+ctx.moveTo(211, 108)  
+ctx.lineTo(171, 108)  
+ctx.stroke()
+
+ctx.beginPath()
+ctx.moveTo(171, 108)  
+ctx.lineTo(171, 68)  
+ctx.stroke()
+
+ctx.beginPath()
+ctx.moveTo(171, 68)  
+ctx.lineTo(131, 68)  
+ctx.stroke()
+
+ctx.beginPath()
+ctx.moveTo(131, 68)  
+ctx.lineTo(131, 108)  
+ctx.stroke()
+
+ctx.beginPath()
+ctx.moveTo(131, 108)  
+ctx.lineTo(51, 108)  
+ctx.stroke()
+
+ctx.beginPath()
+ctx.moveTo(51, 108)  
+ctx.lineTo(51, 188)  
+ctx.stroke()
+
+ctx.beginPath()
+ctx.moveTo(51, 188)  
+ctx.lineTo(91, 188)  
+ctx.stroke()
+
+ctx.beginPath()
+ctx.moveTo(91, 188)  
+ctx.lineTo(91, 148)  
+ctx.stroke()
+
+ctx.beginPath()
+ctx.moveTo(91, 148)  
+ctx.lineTo(171, 148)  
+ctx.stroke()
+
+ctx.beginPath()
+ctx.moveTo(171, 148)  
+ctx.lineTo(171, 188)  
+ctx.stroke()
+
+ctx.beginPath()
+ctx.moveTo(171, 188)  
+ctx.lineTo(131, 188)  
+ctx.stroke()
+
+ctx.beginPath()
+ctx.moveTo(131, 188)  
+ctx.lineTo(131, 208)  
+ctx.stroke()
+</script>
+</p><h1>Final Report</h1>
 <p>期末口頭與書面專題報告 (20%)</p>
 <p>期末口頭專題報告影片:</p>
 <p style="padding-left: 30px;">......</p>
